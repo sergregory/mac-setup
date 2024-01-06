@@ -1,0 +1,25 @@
+---
+  - name: Ensure my personal & communication tools are installed
+    homebrew_cask:
+      name:
+        - google-chrome
+        - vlc
+        - telegram
+        - whatsapp
+        - microsoft-teams
+
+  - name: Ensure my OSX productivity tools are installed
+    homebrew_cask:
+      name:
+        - mos
+        - aldente
+        - resquetime
+        - raycast
+        - karabiner-elements
+        - hiddenbar
+        - alt-tab
+
+  - name: Ensure windows FS tools installed
+    homebrew:
+      name:
+        - gromgit/fuse/ntfs-3g-mac

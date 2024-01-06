@@ -1,0 +1,66 @@
+---
+  - name: Add required homebrew repos
+    homebrew_tap:
+      name: homebrew/cask-fonts
+
+  - name: Ensure console utils are installed
+    homebrew:
+      name:
+        - ansible-lint
+        - bat
+        - bfg
+        - exa
+        - git
+        - git-lfs
+        - gh
+        - gnupg
+        - hadolint
+        - httpie
+        - jsonlint
+        - fd
+        - fzf
+        - colima
+        - docker
+        - mosh
+        - mysql-client
+        - nmap
+        - neovim
+        - openssh
+        - pinentry-mac
+        - pwgen
+        - pv
+        - ripgrep
+        - yamllint
+        - azure-cli
+        - starship
+        - tmux
+
+  - name: Ensure graphical utils are installed
+    homebrew_cask:
+      name:
+        - font-sauce-code-pro-nerd-font
+        - ngrok
+        - intellij-idea
+        - postman
+        - lens
+        - dbeaver-community
+        - iterm2
+
+  - name: Ensure asdf installed
+    homebrew:
+      name: asdf
+      state: present
+
+  - name: Ensure asdf plugins installed
+    shell: |
+      asdf plugin-add {{ item }} || exit 0
+    with_items:
+      - java
+      - maven
+
+  - name: Ensure java-related tools installed
+    shell: |
+      asdf install {{ item }}
+    with_items:
+      - java oracle-17.0.9
+      - maven 3.9.0
